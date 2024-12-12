@@ -1,0 +1,895 @@
+{
+  "10": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "11": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "12": {
+    "inputs": {
+      "unet_name": "flux1-fill-dev.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "102": {
+    "inputs": {
+      "seed": [
+        "424",
+        3
+      ],
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "beta",
+      "denoise": [
+        "483",
+        0
+      ],
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "451",
+        0
+      ],
+      "negative": [
+        "628",
+        1
+      ],
+      "latent_image": [
+        "220",
+        2
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "103": {
+    "inputs": {
+      "text": [
+        "693",
+        0
+      ],
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "104": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "106": {
+    "inputs": {
+      "samples": [
+        "102",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "170": {
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "171": {
+    "inputs": {
+      "strength": 1,
+      "strength_type": "multiply",
+      "conditioning": [
+        "220",
+        0
+      ],
+      "style_model": [
+        "173",
+        0
+      ],
+      "clip_vision_output": [
+        "172",
+        0
+      ]
+    },
+    "class_type": "StyleModelApply",
+    "_meta": {
+      "title": "Apply Style Model"
+    }
+  },
+  "172": {
+    "inputs": {
+      "crop": "center",
+      "clip_vision": [
+        "170",
+        0
+      ],
+      "image": [
+        "381",
+        0
+      ]
+    },
+    "class_type": "CLIPVisionEncode",
+    "_meta": {
+      "title": "CLIP Vision Encode"
+    }
+  },
+  "173": {
+    "inputs": {
+      "style_model_name": "flux1-redux-dev.safetensors"
+    },
+    "class_type": "StyleModelLoader",
+    "_meta": {
+      "title": "Load Style Model"
+    }
+  },
+  "220": {
+    "inputs": {
+      "noise_mask": true,
+      "positive": [
+        "103",
+        0
+      ],
+      "negative": [
+        "104",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ],
+      "pixels": [
+        "640",
+        0
+      ],
+      "mask": [
+        "643",
+        0
+      ]
+    },
+    "class_type": "InpaintModelConditioning",
+    "_meta": {
+      "title": "InpaintModelConditioning"
+    }
+  },
+  "248": {
+    "inputs": {
+      "image": "$248-0",
+      "block": false,
+      "restore_mask": "never",
+      "images": [
+        "640",
+        0
+      ]
+    },
+    "class_type": "PreviewBridge",
+    "_meta": {
+      "title": "Preview Bridge (Image)"
+    }
+  },
+  "252": {
+    "inputs": {
+      "images": [
+        "106",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "318": {
+    "inputs": {
+      "mask": [
+        "643",
+        0
+      ]
+    },
+    "class_type": "PreviewMask_",
+    "_meta": {
+      "title": "Preview Mask Mixlab"
+    }
+  },
+  "321": {
+    "inputs": {
+      "value": 512
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "Buffer"
+    }
+  },
+  "324": {
+    "inputs": {
+      "value": 1536
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "Output Size"
+    }
+  },
+  "327": {
+    "inputs": {
+      "expand": [
+        "394",
+        0
+      ],
+      "incremental_expandrate": 0,
+      "tapered_corners": true,
+      "flip_input": false,
+      "blur_radius": [
+        "400",
+        0
+      ],
+      "lerp_alpha": 1,
+      "decay_factor": 1,
+      "fill_holes": false,
+      "mask": [
+        "696",
+        0
+      ]
+    },
+    "class_type": "GrowMaskWithBlur",
+    "_meta": {
+      "title": "Grow Mask With Blur"
+    }
+  },
+  "364": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "366": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "370": {
+    "inputs": {
+      "seed": [
+        "424",
+        3
+      ],
+      "steps": 1,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "beta",
+      "denoise": 0.1,
+      "model": [
+        "12",
+        0
+      ],
+      "positive": [
+        "364",
+        0
+      ],
+      "negative": [
+        "366",
+        0
+      ],
+      "latent_image": [
+        "373",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "373": {
+    "inputs": {
+      "pixels": [
+        "686",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "376": {
+    "inputs": {
+      "samples": [
+        "370",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "381": {
+    "inputs": {
+      "x": 0,
+      "y": 0,
+      "resize_source": false,
+      "destination": [
+        "382",
+        0
+      ],
+      "source": [
+        "422",
+        0
+      ],
+      "mask": [
+        "695",
+        0
+      ]
+    },
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "ImageCompositeMasked"
+    }
+  },
+  "382": {
+    "inputs": {
+      "width": [
+        "383",
+        0
+      ],
+      "height": [
+        "383",
+        1
+      ],
+      "batch_size": 1,
+      "color": 0
+    },
+    "class_type": "EmptyImage",
+    "_meta": {
+      "title": "EmptyImage"
+    }
+  },
+  "383": {
+    "inputs": {
+      "image": [
+        "422",
+        0
+      ]
+    },
+    "class_type": "GetImageSize+",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "394": {
+    "inputs": {
+      "value": 3
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "Mask Expand"
+    }
+  },
+  "400": {
+    "inputs": {
+      "value": 3
+    },
+    "class_type": "easy float",
+    "_meta": {
+      "title": "Mask Blur"
+    }
+  },
+  "422": {
+    "inputs": {
+      "image": "pink blazer.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Clothing Image"
+    }
+  },
+  "424": {
+    "inputs": {
+      "seed": 191530045663739
+    },
+    "class_type": "Seed",
+    "_meta": {
+      "title": "Seed"
+    }
+  },
+  "451": {
+    "inputs": {
+      "guidance": 50,
+      "conditioning": [
+        "628",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "483": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "easy float",
+    "_meta": {
+      "title": "Denoise"
+    }
+  },
+  "542": {
+    "inputs": {
+      "Input": [
+        "575",
+        0
+      ],
+      "conditioning1": [
+        "220",
+        0
+      ],
+      "conditioning2": [
+        "171",
+        0
+      ]
+    },
+    "class_type": "CR Conditioning Input Switch",
+    "_meta": {
+      "title": "CR Conditioning Input Switch"
+    }
+  },
+  "575": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "Guidence Type 1 Using Prompt 2 Using Redux"
+    }
+  },
+  "581": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "376",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Final output"
+    }
+  },
+  "583": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "678",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "590": {
+    "inputs": {
+      "image": "dash-img-1733851450227.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Target Image"
+    }
+  },
+  "627": {
+    "inputs": {
+      "control_net_name": "FLUX.1-dev-ControlNet-Union-Pro.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "628": {
+    "inputs": {
+      "strength": 0.8,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "542",
+        0
+      ],
+      "negative": [
+        "220",
+        1
+      ],
+      "control_net": [
+        "637",
+        0
+      ],
+      "image": [
+        "629",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "629": {
+    "inputs": {
+      "preprocessor": "OpenposePreprocessor",
+      "resolution": 512,
+      "image": [
+        "640",
+        0
+      ]
+    },
+    "class_type": "AIO_Preprocessor",
+    "_meta": {
+      "title": "AIO Aux Preprocessor"
+    }
+  },
+  "634": {
+    "inputs": {
+      "mask": [
+        "643",
+        0
+      ]
+    },
+    "class_type": "PreviewMask_",
+    "_meta": {
+      "title": "Preview Mask Mixlab"
+    }
+  },
+  "637": {
+    "inputs": {
+      "type": "openpose",
+      "control_net": [
+        "627",
+        0
+      ]
+    },
+    "class_type": "SetUnionControlNetType",
+    "_meta": {
+      "title": "SetUnionControlNetType"
+    }
+  },
+  "638": {
+    "inputs": {
+      "images": [
+        "629",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "640": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": true,
+      "image1": [
+        "671",
+        0
+      ],
+      "image2": [
+        "590",
+        0
+      ]
+    },
+    "class_type": "ImageConcanate",
+    "_meta": {
+      "title": "Image Concatenate"
+    }
+  },
+  "643": {
+    "inputs": {
+      "channel": "red",
+      "image": [
+        "648",
+        0
+      ]
+    },
+    "class_type": "ImageToMask",
+    "_meta": {
+      "title": "Convert Image to Mask"
+    }
+  },
+  "645": {
+    "inputs": {
+      "mask": [
+        "327",
+        0
+      ]
+    },
+    "class_type": "MaskToImage",
+    "_meta": {
+      "title": "Convert Mask to Image"
+    }
+  },
+  "648": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": true,
+      "image1": [
+        "382",
+        0
+      ],
+      "image2": [
+        "645",
+        0
+      ]
+    },
+    "class_type": "ImageConcanate",
+    "_meta": {
+      "title": "Image Concatenate"
+    }
+  },
+  "649": {
+    "inputs": {
+      "images": [
+        "640",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "658": {
+    "inputs": {
+      "images": [
+        "381",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "665": {
+    "inputs": {
+      "image": [
+        "590",
+        0
+      ]
+    },
+    "class_type": "GetImage_(Width&Height) _O",
+    "_meta": {
+      "title": "Height of Target Image"
+    }
+  },
+  "671": {
+    "inputs": {
+      "width": 0,
+      "height": 0,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": true,
+      "divisible_by": 2,
+      "height_input": [
+        "665",
+        1
+      ],
+      "crop": "disabled",
+      "image": [
+        "381",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize reference mask to height of Target Image"
+    }
+  },
+  "676": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": true,
+      "image1": [
+        "422",
+        0
+      ],
+      "image2": [
+        "590",
+        0
+      ]
+    },
+    "class_type": "ImageConcanate",
+    "_meta": {
+      "title": "Image Concatenate"
+    }
+  },
+  "678": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": true,
+      "image1": [
+        "676",
+        0
+      ],
+      "image2": [
+        "376",
+        0
+      ]
+    },
+    "class_type": "ImageConcanate",
+    "_meta": {
+      "title": "Image Concatenate"
+    }
+  },
+  "683": {
+    "inputs": {
+      "image": [
+        "590",
+        0
+      ]
+    },
+    "class_type": "GetImage_(Width&Height) _O",
+    "_meta": {
+      "title": "GetImage_(Width&Height) _O"
+    }
+  },
+  "685": {
+    "inputs": {
+      "images": [
+        "686",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "686": {
+    "inputs": {
+      "width": [
+        "683",
+        0
+      ],
+      "height": [
+        "683",
+        1
+      ],
+      "position": "top-right",
+      "x_offset": 0,
+      "y_offset": 0,
+      "image": [
+        "106",
+        0
+      ]
+    },
+    "class_type": "ImageCrop+",
+    "_meta": {
+      "title": "Image Crop"
+    }
+  },
+  "692": {
+    "inputs": {
+      "seed": 1073056164182740,
+      "model": "gpt-4o-2024-11-20",
+      "detail": "auto",
+      "max_tokens": 512,
+      "prompt": "Describe the clothing, object, design or any other item in this image. Be brief and to the point. Avoid starting phrases like \"This image contains...\"",
+      "image": [
+        "381",
+        0
+      ]
+    },
+    "class_type": "NegiTools_OpenAiGpt4v",
+    "_meta": {
+      "title": "GPT clothes extractor"
+    }
+  },
+  "693": {
+    "inputs": {
+      "text": [
+        "692",
+        0
+      ],
+      "text2": "A green, long-sleeved, fitted turtleneck shirt."
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text"
+    }
+  },
+  "695": {
+    "inputs": {
+      "image": "prepared image mask.png",
+      "channel": "red",
+      "upload": "image"
+    },
+    "class_type": "LoadImageMask",
+    "_meta": {
+      "title": "Load Clothing Mask"
+    }
+  },
+  "696": {
+    "inputs": {
+      "image": "ComfyUI_temp_naadz_00001_.png",
+      "channel": "red",
+      "upload": "image"
+    },
+    "class_type": "LoadImageMask",
+    "_meta": {
+      "title": "Load Target Mask"
+    }
+  }
+}
