@@ -843,7 +843,7 @@
   "692": {
     "inputs": {
       "seed": 1073056164182740,
-      "model": "gpt-4o-2024-11-20",
+      "model": "gpt-4o",
       "detail": "auto",
       "max_tokens": 512,
       "prompt": "Describe the clothing, object, design or any other item in this image. Be brief and to the point. Avoid starting phrases like \"This image contains...\"",
