@@ -10,7 +10,7 @@
   },
   "11": {
     "inputs": {
-      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name1": "t5xxl_fp16.safetensors",
       "clip_name2": "clip_l.safetensors",
       "type": "flux"
     },
@@ -21,8 +21,8 @@
   },
   "12": {
     "inputs": {
-      "unet_name": "flux1-fill-dev.safetensors",
-      "weight_dtype": "fp8_e4m3fn"
+      "unet_name": "flux-dev-fill.safetensors",
+      "weight_dtype": "default"
     },
     "class_type": "UNETLoader",
     "_meta": {
@@ -32,8 +32,8 @@
   "102": {
     "inputs": {
       "seed": [
-        "424",
-        3
+        "697",
+        0
       ],
       "steps": 20,
       "cfg": 1,
@@ -160,7 +160,7 @@
   },
   "173": {
     "inputs": {
-      "style_model_name": "flux1-redux-dev.safetensors"
+      "style_model_name": "flux-redux.safetensors"
     },
     "class_type": "StyleModelLoader",
     "_meta": {
@@ -235,24 +235,6 @@
       "title": "Preview Mask Mixlab"
     }
   },
-  "321": {
-    "inputs": {
-      "value": 512
-    },
-    "class_type": "easy int",
-    "_meta": {
-      "title": "Buffer"
-    }
-  },
-  "324": {
-    "inputs": {
-      "value": 1536
-    },
-    "class_type": "easy int",
-    "_meta": {
-      "title": "Output Size"
-    }
-  },
   "327": {
     "inputs": {
       "expand": [
@@ -308,8 +290,8 @@
   "370": {
     "inputs": {
       "seed": [
-        "424",
-        3
+        "697",
+        0
       ],
       "steps": 1,
       "cfg": 1,
@@ -451,15 +433,6 @@
       "title": "Load Clothing Image"
     }
   },
-  "424": {
-    "inputs": {
-      "seed": 191530045663739
-    },
-    "class_type": "Seed",
-    "_meta": {
-      "title": "Seed"
-    }
-  },
   "451": {
     "inputs": {
       "guidance": 50,
@@ -549,7 +522,7 @@
   },
   "627": {
     "inputs": {
-      "control_net_name": "FLUX.1-dev-ControlNet-Union-Pro.safetensors"
+      "control_net_name": "Flux/union.safetensors"
     },
     "class_type": "ControlNetLoader",
     "_meta": {
@@ -862,8 +835,7 @@
       "text": [
         "692",
         0
-      ],
-      "text2": "A green, long-sleeved, fitted turtleneck shirt."
+      ]
     },
     "class_type": "ShowText|pysssss",
     "_meta": {
@@ -890,6 +862,15 @@
     "class_type": "LoadImageMask",
     "_meta": {
       "title": "Load Target Mask"
+    }
+  },
+  "697": {
+    "inputs": {
+      "seed": 758082565964478
+    },
+    "class_type": "Seed (rgthree)",
+    "_meta": {
+      "title": "Seed (rgthree)"
     }
   }
 }
